@@ -9,28 +9,37 @@ import Icon from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
 
 
-const Register = () => {
+const Register = (props) => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [phone, setPhone] = useState("");
 
-   
 
+    function signUp() {
+        console.log(name, email, password, phone)
+        // firebase.auth().createUserWithEmailAndPassword(email, password).then((data)=>{
+        //    console.log(data);
+        // })
+        props.navigation.navigate("Dashboard")
+    }
+    function signIn() {
+        props.navigation.navigate("SignIn")
+    }
     return (
         <View style={{ flex: 1, backgroundColor: "#ef6e73" }}>
             <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
                 <View>
-                    <Icon  name="account-group" style={{ color: "#fff", fontSize: 150 }} />
+                    <Icon name="account-group" style={{ color: "#fff", fontSize: 150 }} />
                 </View>
             </View>
-            <View style={{ flex: 2, alignItems: "center" }}>
-            <View style={styles.textInputHeader}>
+            <View style={{ flex: 3, alignItems: "center" }}>
+                <View style={styles.textInputHeader}>
                     <TextInput
                         placeholder="Name"
                         placeholderTextColor="#fff"
                         value={name}
-                        onChangeText={(name) => setName({ name })}
+                        onChangeText={(name) => setName(name)}
                         style={styles.textInput}
                     />
                 </View>
@@ -39,7 +48,7 @@ const Register = () => {
                         placeholder="Email"
                         placeholderTextColor="#fff"
                         value={email}
-                        onChangeText={(email) => setEmail({ email })}
+                        onChangeText={(email) => setEmail(email)}
                         style={styles.textInput}
                     />
                 </View>
@@ -48,7 +57,7 @@ const Register = () => {
                         placeholder="Password"
                         placeholderTextColor="#fff"
                         value={password}
-                        onChangeText={(password) => setPassword({ password })}
+                        onChangeText={(password) => setPassword(password)}
                         style={styles.textInput}
                     />
                 </View>
@@ -57,19 +66,20 @@ const Register = () => {
                         placeholder="Phone"
                         placeholderTextColor="#fff"
                         value={phone}
-                        onChangeText={(phone) => setPhone({ phone })}
+                        onChangeText={(phone) => setPhone(phone)}
                         style={styles.textInput}
                     />
                 </View>
                 <View style={styles.buttonView} >
                     <TouchableOpacity
-                        // onPress={this.SignIn.bind(this)}
+                        onPress={signUp}
                         activeOpacity={.5} style={styles.button} >
                         <Text style={styles.buttonText} >SIGN Up</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.signButtonView} >
                     <TouchableOpacity
+                        onPress={signIn}
                         activeOpacity={.5}
                         style={styles.SignUpbutton} >
                         <Text style={styles.SignIpText} >SIGN In</Text>
@@ -104,7 +114,7 @@ const styles = StyleSheet.create({
     signButtonView: {
         height: 45,
         width: "85%",
-        marginTop: 20,
+        marginTop: 12,
         justifyContent: "center",
         // marginBottom:5
     },
@@ -136,7 +146,7 @@ const styles = StyleSheet.create({
         borderRadius: 2,
     },
     buttonText: {
-        color: "#e91e8d",
+        color: "#ef6e73",
         fontSize: 12,
     },
 });

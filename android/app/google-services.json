@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "767381233678",
+    "firebase_url": "https://react-todo-b9ad7.firebaseio.com",
+    "project_id": "react-todo-b9ad7",
+    "storage_bucket": "react-todo-b9ad7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:767381233678:android:f9984302a61d7fb0729c5f",
+        "android_client_info": {
+          "package_name": "com.chatapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "767381233678-je0o7sn5hb5ggi3nrg31e26jpitikiu2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqKr8OBUdD4QYc0UZL7U8QGt6LSC8WN9k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "767381233678-je0o7sn5hb5ggi3nrg31e26jpitikiu2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

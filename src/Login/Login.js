@@ -6,6 +6,7 @@ import {
 
 import { Header, LearnMoreLinks, Colors, DebugInstructions, ReloadInstructions, } from 'react-native/Libraries/NewAppScreen';
 import Icon from 'react-native-vector-icons/dist/MaterialCommunityIcons';
+import firebase from 'react-native-firebase';
 
 
 
@@ -14,25 +15,36 @@ const Login = (props) => {
     const [password, setPassword] = useState("");
     const [isLoader, setIsLoader] = useState(false);
 
-function signUp(){
-console.log(props);
-props.navigation.navigate("SignUp")
-}
+    function signIn() {
+        console.log(email, password )
+        // firebase.auth().signInWithEmailAndPassword(email, password)
+        //     .then((data) => {
+        //         console.log(data.user);
+        //         props.navigation.navigate("Dashboard")
+
+        //     })
+        //     .catch((error) => {
+        //         console.log(error)
+        //     });
+    }
+    function signUp() {
+        props.navigation.navigate("SignUp")
+    }
     return (
         <View style={{ flex: 1, backgroundColor: "#ef6e73" }}>
             <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
                 <View>
-                    <Icon  name="account-group" style={{ color: "#fff", fontSize: 150 }} />
+                    <Icon name="account-group" style={{ color: "#fff", fontSize: 150 }} />
                 </View>
             </View>
             <View style={{ flex: 2, alignItems: "center" }}>
-        
+
                 <View style={styles.textInputHeader}>
                     <TextInput
                         placeholder="Email"
                         placeholderTextColor="#fff"
                         value={email}
-                        onChangeText={(email) => setEmail({ email })}
+                        onChangeText={(email) => setEmail(email)}
                         style={styles.textInput}
                     />
                 </View>
@@ -41,13 +53,13 @@ props.navigation.navigate("SignUp")
                         placeholder="Password"
                         placeholderTextColor="#fff"
                         value={password}
-                        onChangeText={(password) => setPassword({ password })}
+                        onChangeText={(password) => setPassword(password)}
                         style={styles.textInput}
                     />
                 </View>
                 <View style={styles.buttonView} >
                     <TouchableOpacity
-                        // onPress={this.SignIn.bind(this)}
+                        onPress={signIn}
                         activeOpacity={.5} style={styles.button} >
                         <Text style={styles.buttonText} >SIGN IN</Text>
                     </TouchableOpacity>
@@ -55,8 +67,9 @@ props.navigation.navigate("SignUp")
                 <View style={styles.signButtonView} >
                     <TouchableOpacity
                         activeOpacity={.5}
-                        style={styles.SignUpbutton} 
-                        onPress={signUp}>
+                        style={styles.SignUpbutton}
+                        onPress={signUp}
+                    >
                         <Text style={styles.SignIpText} >SIGN Up</Text>
                     </TouchableOpacity>
                 </View>
@@ -121,7 +134,7 @@ const styles = StyleSheet.create({
         borderRadius: 2,
     },
     buttonText: {
-        color: "#e91e8d",
+        color: "#ef6e73",
         fontSize: 12,
     },
 });
