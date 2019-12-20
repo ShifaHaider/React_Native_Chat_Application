@@ -93,7 +93,7 @@ export default class App extends React.Component {
           <View style={styles.profileView}>
             <Image style={styles.image} source={this.state.avatarSource ? this.state.avatarSource : require('../Images/flower.jpg')} />
           </View>
-          <View style={{ paddingLeft: 15, height: 230, }}>
+          <View style={{ paddingLeft: 15,  }}>
             {this.state.editProfile ?
               <View>
                  <View style={{height: 50, width: "85%",}}>
@@ -123,7 +123,7 @@ export default class App extends React.Component {
                         style={styles.textInput}
                     />
                 </View>
-                       {/* <View style={{ justifyContent: "center", alignItems: "center" }}>
+                       <View style={{ justifyContent: "center", alignItems: "center", marginTop: 20, }}>
             <View style={styles.buttonView}>
               <TouchableOpacity
                 onPress={this.editProfile.bind(this)}
@@ -131,7 +131,7 @@ export default class App extends React.Component {
                 <Text style={styles.buttonText} >UPDATE PROFILE</Text>
               </TouchableOpacity>
             </View>
-          </View> */}
+          </View>
               </View> :
               <View>
                 <View>
@@ -146,19 +146,20 @@ export default class App extends React.Component {
                   <Text style={{ fontSize: 14, color: "#ef6e73" }}>Contect Number</Text>
                   <Text style={{ fontSize: 16 }}>0343534535</Text>
                 </View>
-              </View>}
-          </View>
+                <View style={{alignItems: "flex-end", justifyContent: "flex-end" , marginRight:12 , marginTop: 20 }}>
           <TouchableOpacity activeOpacity={.5} 
           onPress={this.editProfile.bind(this)}
             style={{
               height: 50, width: 50, backgroundColor: "#ef6e73",
               borderRadius: Math.round(Dimensions.get('window').width + Dimensions.get('window').height) / 2,
-              position: "absolute", right: 20,bottom:0 , zIndex: 1, alignItems: "center", justifyContent: "center"
+               alignItems: "center", justifyContent: "center"
             }}>
-            <Icon name="edit" style={{ color: "#fff", fontSize: 24, }} />
+            <Icon name="edit" style={{ color: "#fff", fontSize: 24, }} />  
           </TouchableOpacity>
-   
-
+          </View>
+              </View>}
+          </View>
+          
         </ScrollView>
       </View>
     );
