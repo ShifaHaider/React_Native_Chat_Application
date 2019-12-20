@@ -62,14 +62,14 @@ class Room extends Component {
                         <Text style={styles.headerText}>Shifa Khan</Text>
                     </View>
                 </View>
-                <ScrollView ref={ref => this.scrollView = ref}
+                <ScrollView style={{padding:5}} ref={ref => this.scrollView = ref}
                     onContentSizeChange={(contentWidth, contentHeight) => {
                         this.scrollView.scrollToEnd({ animated: true });
                     }}>
                     {this.state.messages.map((data, key) => {
                         return (
                             <View key={key} >
-                                {data.id === "me" ? <View style={styles.myMessage}>
+                                {key %2 === 0 ? <View style={styles.myMessage}>
                                     <Text style={{ color: "#fff", }}>{data.message}</Text>
                                 </View> : <View>
                                         <View style={styles.friendMessage}>
@@ -122,10 +122,12 @@ const styles = StyleSheet.create({
     myMessage: {
         height: "auto", width: "60%", backgroundColor: "#ef6e73", marginTop: 12, marginLeft: 6,
         borderRadius: 8, padding: 10, borderTopLeftRadius: 0,
+        marginBottom:3
     },
     friendMessage: {
         height: "auto", width: "60%", backgroundColor: "#fff",
         padding: 10, alignSelf: "flex-end", marginRight: 6,
+        marginBottom:3,
         borderRadius: 8, marginTop: 12, borderTopRightRadius: 0
     },
     bottomItems: {

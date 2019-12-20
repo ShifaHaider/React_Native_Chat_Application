@@ -168,7 +168,6 @@ class Chats extends Component {
         return (
             <View>
                 <View>
-
                     {
                         this.state.listArr.map((l, i) => (
                             <TouchableOpacity key={i} activeOpacity={.5} onPress={this.goToRoom.bind(this)}>
@@ -181,10 +180,8 @@ class Chats extends Component {
                                     </View>
                                 }
                                 leftAvatar={{ source: require('../../Images/flower.jpg') }}
-
                                 // leftAvatar={{ source: { uri: l.avatar_url } }}
                                 bottomDivider
-
                             />
                             </TouchableOpacity>
                             // <ListItem
@@ -197,7 +194,6 @@ class Chats extends Component {
                             // />
                         ))
                     }
-
                 </View>
             </View>
         )

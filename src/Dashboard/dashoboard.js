@@ -43,22 +43,24 @@ class Dashboard extends Component {
             this.setState({ request: true, chats: false, contacts: false, reqColor: "#fff", chatColor: "#eeadaf", conColor: "#eeadaf" })
         }
     }
- profile(){
-    this.props.navigation.navigate("Profile")
- }
+    profile() {
+        this.props.navigation.navigate("Profile")
+    }
     render() {
         return (
             <View style={{ flex: 1 }}>
-                <View style={{ flex: 1, backgroundColor: "#ef6e73", }}>
-                    <View style={{flexDirection:"row" , justifyContent:"space-between" , 
-                    alignItems:"center", height:50, paddingRight:10, paddingLeft:10 }}>
-                        <Text style={{ color: "#fff", fontSize: 21,  fontWeight: "bold" }}>
+                <View style={{ height:120, backgroundColor: "#ef6e73", justifyContent:"space-around" }}>
+                    <View style={{
+                        flexDirection: "row", justifyContent: "space-between",
+                        alignItems: "center", height: 50, paddingRight: 10, paddingLeft: 10
+                    }}>
+                        <Text style={{ color: "#fff", fontSize: 21, fontWeight: "bold" }}>
                             ChatApp</Text>
-                            <TouchableOpacity activeOpacity={.5} onPress={this.profile.bind(this)}>
-                        <Icon name="account-circle" style={{ color: "#fff", fontSize: 28 }} />
+                        <TouchableOpacity activeOpacity={.5} onPress={this.profile.bind(this)}>
+                            <Icon name="account-circle" style={{ color: "#fff", fontSize: 28 }} />
                         </TouchableOpacity>
                     </View>
-                    <View style={{ marginTop: 32, flexDirection: "row", justifyContent: "space-around" }}>
+                    <View style={{ flexDirection: "row", justifyContent: "space-around", }}>
                         <TouchableOpacity activeOpacity={.5} style={styles.tabButton} onPress={this.routes.bind(this, "chats")}>
                             <Icon name="chat" style={{ color: this.state.chatColor, fontSize: 24 }} />
                             <Text style={{ color: this.state.chatColor, fontSize: 12 }}>Chats</Text>
@@ -73,7 +75,7 @@ class Dashboard extends Component {
                         </TouchableOpacity>
                     </View>
                 </View>
-                <View style={{ flex: 5, }}>
+                <View style={{ flex: 1, }}>
                     <ScrollView>
                         {this.state.chats ? <Chats routes={this.props} /> : null}
                         {this.state.contacts ? <Contacts /> : null}
