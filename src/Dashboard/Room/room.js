@@ -31,8 +31,6 @@ class Room extends Component {
                 , { message: "I am fine...", id: "friend", date: Date.now() },
                 { message: "How are you", id: "me", date: Date.now() }, { message: "I am fine...", id: "friend", date: Date.now() },
                 , { message: "I am fine...", id: "friend", date: Date.now() }, { message: "How are you", id: "me", date: Date.now() }
-
-
             ],
             email: "",
         }

@@ -15,7 +15,6 @@ import io.invertase.firebase.auth.RNFirebaseAuthPackage;
 import io.invertase.firebase.firestore.RNFirebaseFirestorePackage; // <-- Add this line
 import com.imagepicker.ImagePickerPackage; // <-- add this import
 
-
 public class MainApplication extends Application implements ReactApplication {
 
   private final ReactNativeHost mReactNativeHost =
@@ -32,7 +31,6 @@ public class MainApplication extends Application implements ReactApplication {
           packages.add(new RNFirebaseAuthPackage());
           packages.add(new RNFirebaseFirestorePackage());
           new ImagePickerPackage();
-          
           // Packages that cannot be autolinked yet can be added manually here, for example:
           // packages.add(new MyReactNativePackage());
           return packages;
