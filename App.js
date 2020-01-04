@@ -82,11 +82,7 @@ class AppNavigato extends React.Component{
 
 
 const AppNavigator = createAppContainer(createStackNavigator({
-  Dashboard: {
-    screen: Dashboard, navigationOptions: {
-      header: null
-    }
-  },
+
   SignIn: {
     screen: Login, navigationOptions: {
       header: null
@@ -97,7 +93,11 @@ const AppNavigator = createAppContainer(createStackNavigator({
       header: null
     }
   },
- 
+  Dashboard: {
+    screen: Dashboard, navigationOptions: {
+      header: null
+    }
+  },
   Room: {
     screen: Room, navigationOptions: {
       header: null
