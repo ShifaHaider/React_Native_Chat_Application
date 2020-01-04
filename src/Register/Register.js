@@ -1,27 +1,47 @@
 import React, { useState } from 'react';
 import {
     SafeAreaView, StyleSheet, ScrollView, View, Text, StatusBar, TextInput,
-    ImageBackground, TouchableOpacity, ActivityIndicator, Image
+    ImageBackground, TouchableOpacity, ActivityIndicator, Image, Alert
 } from 'react-native';
 
 import { Header, LearnMoreLinks, Colors, DebugInstructions, ReloadInstructions, } from 'react-native/Libraries/NewAppScreen';
 import Icon from 'react-native-vector-icons/dist/MaterialCommunityIcons';
+import firebase from 'react-native-firebase';
 
 
 
 const Register = (props) => {
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [phone, setPhone] = useState("");
+    const [name, setName] = useState("Shifa");
+    const [email, setEmail] = useState("shifa@gmail.com");
+    const [password, setPassword] = useState("123456789");
+    const [phone, setPhone] = useState("03435345345");
 
 
     function signUp() {
         console.log(name, email, password, phone)
-        // firebase.auth().createUserWithEmailAndPassword(email, password).then((data)=>{
-        //    console.log(data);
-        // })
-        props.navigation.navigate("Dashboard")
+        firebase.auth().createUserWithEmailAndPassword(email, password).then((data) => {
+            console.log(data.user);
+            var userData = {
+                name: name,
+                email: email,
+                phone: phone,
+                _id: data.user.uid,
+            };
+            var url = "http://192.168.0.101:9000/users/users";
+            fetch(url, {
+                method: "post",
+                body: JSON.stringify(userData),
+                headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json"
+                }
+            }).then(res => res.json())
+                .then(text => console.log(text)).catch(err => console.log(err))
+        }).catch((err) => {
+            Alert.alert("error")
+            console.log(err)
+        })
+
     }
     function signIn() {
         props.navigation.navigate("SignIn")

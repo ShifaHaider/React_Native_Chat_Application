@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {
     SafeAreaView, StyleSheet, ScrollView, View, Text, StatusBar, TextInput,
-    ImageBackground, TouchableOpacity, ActivityIndicator, Image
+    ImageBackground, TouchableOpacity, ActivityIndicator, Image,
 } from 'react-native';
 
 import { Header, LearnMoreLinks, Colors, DebugInstructions, ReloadInstructions, } from 'react-native/Libraries/NewAppScreen';
@@ -13,19 +13,19 @@ import firebase from 'react-native-firebase';
 const Login = (props) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [isLoader, setIsLoader] = useState(false);
+    const [loader, setLoader] = useState(false);
 
     function signIn() {
-        console.log(email, password )
-        // firebase.auth().signInWithEmailAndPassword(email, password)
-        //     .then((data) => {
-        //         console.log(data.user);
-        //         props.navigation.navigate("Dashboard")
-
-        //     })
-        //     .catch((error) => {
-        //         console.log(error)
-        //     });
+        setLoader(true)
+        firebase.auth().signInWithEmailAndPassword(email, password)
+            .then((data) => {
+                setLoader(false);
+                localStorage.setItem("ID", data.user.uid);
+                props.navigation.navigate("Dashboard")
+            })
+            .catch((error) => {
+                console.log(error)
+            });
     }
     function signUp() {
         props.navigation.navigate("SignUp")
@@ -58,11 +58,13 @@ const Login = (props) => {
                     />
                 </View>
                 <View style={styles.buttonView} >
+                    {loader ?
+                    <ActivityIndicator size="large" color="#fff" />:
                     <TouchableOpacity
                         onPress={signIn}
                         activeOpacity={.5} style={styles.button} >
                         <Text style={styles.buttonText} >SIGN IN</Text>
-                    </TouchableOpacity>
+                    </TouchableOpacity>}
                 </View>
                 <View style={styles.signButtonView} >
                     <TouchableOpacity

@@ -15,8 +15,8 @@ import Chats from "./src/Dashboard/Chats/chats";
 import Request from "./src/Dashboard/Request/request";
 import Room from "./src/Dashboard/Room/room";
 import Profile from "./src/Profile/profile"
-import { GoogleSignin } from '@react-native-community/google-signin';
-
+import { GoogleSignin } from 'react-native-google-signin';
+//  ye wali lgai this han ,phir
 // import firebase from 'react-native-firebase'
 // 767381233678-5m57rfovetu92ago5qhpnmb8j6dl63e3.apps.googleusercontent.com
 
@@ -25,7 +25,10 @@ class AppNavigato extends React.Component{
     // firebase.auth().signInWithPhoneNumber("+923172679586")
     // .then(confirmResult => console.log(confirmResult))
     // .catch(error => console.log(error ));
-  // }
+    
+  // }ek dafa is aap ki apk nikal shyad login hije acha to nikal mrn aati hon
+  // kah jaarhi he  bhag rhi he nhi lead pta nhi kha hogi wo daikh rhi hon,letreen dhone jaarhi he na, baad mn dholena
+  // mhi bhai lead hi lene ja rhi hon
   async  googleLogin() {
     try {
       // add any configuration settings here:
@@ -79,8 +82,8 @@ class AppNavigato extends React.Component{
 
 
 const AppNavigator = createAppContainer(createStackNavigator({
-  Room: {
-    screen: Room, navigationOptions: {
+  Dashboard: {
+    screen: Dashboard, navigationOptions: {
       header: null
     }
   },
@@ -89,19 +92,19 @@ const AppNavigator = createAppContainer(createStackNavigator({
       header: null
     }
   },
-  Dashboard: {
-    screen: Dashboard, navigationOptions: {
+  SignUp: {
+    screen: Register, navigationOptions: {
+      header: null
+    }
+  },
+ 
+  Room: {
+    screen: Room, navigationOptions: {
       header: null
     }
   },
   Profile: {
     screen: Profile, navigationOptions: {
-      header: null
-    }
-  },
-  
-  SignUp: {
-    screen: Register, navigationOptions: {
       header: null
     }
   },
@@ -118,7 +121,7 @@ const AppNavigator = createAppContainer(createStackNavigator({
  
 
 }))
-export default AppNavigato;
+export default AppNavigator;
 
 
 // const App = ()  => {
