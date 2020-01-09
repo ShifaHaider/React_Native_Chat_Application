@@ -8,7 +8,9 @@ var connection = require('./connection');
 
 
 var Users = require("./Router/users");
-app.use("/users" , Users)
+app.use("/users" , Users);
+var Messages = require("./Router/conversation");
+app.use("/messages", Messages);
 
 app.get('/index', function (req, res) {
     res.send('Index');

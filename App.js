@@ -16,7 +16,6 @@ import Request from "./src/Dashboard/Request/request";
 import Room from "./src/Dashboard/Room/room";
 import Profile from "./src/Profile/profile"
 import { GoogleSignin } from 'react-native-google-signin';
-//  ye wali lgai this han ,phir
 // import firebase from 'react-native-firebase'
 // 767381233678-5m57rfovetu92ago5qhpnmb8j6dl63e3.apps.googleusercontent.com
 
@@ -26,9 +25,7 @@ class AppNavigato extends React.Component{
     // .then(confirmResult => console.log(confirmResult))
     // .catch(error => console.log(error ));
     
-  // }ek dafa is aap ki apk nikal shyad login hije acha to nikal mrn aati hon
-  // kah jaarhi he  bhag rhi he nhi lead pta nhi kha hogi wo daikh rhi hon,letreen dhone jaarhi he na, baad mn dholena
-  // mhi bhai lead hi lene ja rhi hon
+  // }
   async  googleLogin() {
     try {
       // add any configuration settings here:
@@ -37,8 +34,14 @@ class AppNavigato extends React.Component{
       //   androidClientId:"767381233678-5m57rfovetu92ago5qhpnmb8j6dl63e3.apps.googleusercontent.com"
       // });
       GoogleSignin.configure({
+        scopes: ['https://www.googleapis.com/auth/userinfo.profile', 
+        'react-todo-b9ad7@appspot.gserviceaccount.com'],
         webClientId: '767381233678-5m57rfovetu92ago5qhpnmb8j6dl63e3.apps.googleusercontent.com',// my clientID
-        
+        offlineAccess: false, // if you want to access Google API on behalf of the user FROM YOUR SERVER
+        hostedDomain: '', // specifies a hosted domain restriction
+        loginHint: '', // [iOS] The user's ID, or email address, to be prefilled in the authentication UI if possible. [See docs here](https://developers.google.com/identity/sign-in/ios/api/interface_g_i_d_sign_in.html#a0a68c7504c31ab0b728432565f6e33fd)
+        forceConsentPrompt: true, // [Android] if you want to show the authorization prompt at each login.
+        accountName: '',
     });
   
       const data = await GoogleSignin.signIn();
@@ -82,7 +85,11 @@ class AppNavigato extends React.Component{
 
 
 const AppNavigator = createAppContainer(createStackNavigator({
-
+  Room: {
+    screen: Room, navigationOptions: {
+      header: null
+    }
+  },
   SignIn: {
     screen: Login, navigationOptions: {
       header: null
@@ -118,7 +125,6 @@ const AppNavigator = createAppContainer(createStackNavigator({
       header: null
     }
   },
- 
 
 }))
 export default AppNavigator;

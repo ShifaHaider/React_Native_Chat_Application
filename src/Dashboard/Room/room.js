@@ -119,18 +119,17 @@ class Room extends Component {
         var data = {
             message: this.state.message,
         }
-        var url = "http://192.168.0.101:9000/conversation";
-        // fetch(url, {
-        //     method: "post",
-        //     body: JSON.stringify(data),
-        //     headers: {
-        //         "Accept": "application/json",
-        //         "Content-Type": "application/json"
-        //     }
-        // })
-        //     .then(res => res.json())
-        //     .then(text => console.log(text)).catch(err => console.log(err))
-        //   .then(res => res.json().then(text => console.log(text)))
+        var url = "http://192.168.0.101:9000/messages/messages";
+        fetch(url, {
+            method: "post",
+            body: JSON.stringify(data),
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            }
+        })
+            .then(res => res.json())
+            .then(text => console.log(text)).catch(err => console.log(err))
 
         if (this.state.message) {
             this.state.messages.push({ message: this.state.message, id: "me", date: Date.now() })
