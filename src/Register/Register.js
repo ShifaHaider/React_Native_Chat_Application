@@ -18,16 +18,14 @@ const Register = (props) => {
 
 
     function signUp() {
-        console.log(name, email, password, phone)
         firebase.auth().createUserWithEmailAndPassword(email, password).then((data) => {
-            console.log(data.user);
             var userData = {
                 name: name,
                 email: email,
                 phone: phone,
                 _id: data.user.uid,
             };
-            var url = "http://192.168.0.101:9000/users/users";
+            var url = "http://192.168.0.102:9000/users/users";
             fetch(url, {
                 method: "post",
                 body: JSON.stringify(userData),

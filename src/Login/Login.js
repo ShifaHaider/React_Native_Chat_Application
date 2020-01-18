@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {
     SafeAreaView, StyleSheet, ScrollView, View, Text, StatusBar, TextInput,
-    ImageBackground, TouchableOpacity, ActivityIndicator, Image,
+    ImageBackground, TouchableOpacity, ActivityIndicator, Image, AsyncStorage,
 } from 'react-native';
 
 import { Header, LearnMoreLinks, Colors, DebugInstructions, ReloadInstructions, } from 'react-native/Libraries/NewAppScreen';
@@ -20,7 +20,7 @@ const Login = (props) => {
         firebase.auth().signInWithEmailAndPassword(email, password)
             .then((data) => {
                 setLoader(false);
-                localStorage.setItem("ID", data.user.uid);
+                AsyncStorage.setItem("ID", data.user.uid);
                 props.navigation.navigate("Dashboard")
             })
             .catch((error) => {

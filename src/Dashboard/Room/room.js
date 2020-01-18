@@ -117,9 +117,11 @@ class Room extends Component {
 
     sendMessage() {
         var data = {
-            message: this.state.message,
+            text: this.state.message,
+            roomID:this.props.navigation.state.params.friendID,
+            senderID: this.props.navigation.state.params.friendID
         }
-        var url = "http://192.168.0.101:9000/messages/messages";
+        var url = "http://192.168.0.102:9000/messages/messages";
         fetch(url, {
             method: "post",
             body: JSON.stringify(data),
@@ -130,7 +132,7 @@ class Room extends Component {
         })
             .then(res => res.json())
             .then(text => console.log(text)).catch(err => console.log(err))
-
+       
         if (this.state.message) {
             this.state.messages.push({ message: this.state.message, id: "me", date: Date.now() })
             this.setState({ messages: this.state.messages })

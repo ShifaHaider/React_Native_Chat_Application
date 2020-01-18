@@ -939,11 +939,6 @@
     eslint-plugin-react-native "3.6.0"
     prettier "1.16.4"
 
-"@react-native-community/google-signin@^3.0.3":
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/@react-native-community/google-signin/-/google-signin-3.0.3.tgz#3755c5dd082cce8db6b7dd1a6cc511fb247f6918"
-  integrity sha512-/7HTW8QjswXgGhD0C3h/0ZtuNnQApsTZE8wZE7iWoERHEIXQV3GSqVTY8gfB23T7FOxAOpxF5n+v9u5tbYCloA==
-
 "@react-navigation/core@^3.5.1":
   version "3.5.1"
   resolved "https://registry.yarnpkg.com/@react-navigation/core/-/core-3.5.1.tgz#7a2339fca3496979305fb3a8ab88c2ca8d8c214d"
@@ -5344,11 +5339,6 @@ react-native-gesture-handler@^1.4.1:
     hoist-non-react-statics "^2.3.1"
     invariant "^2.2.4"
     prop-types "^15.7.2"
-
-react-native-google-signin@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/react-native-google-signin/-/react-native-google-signin-2.1.1.tgz#4281940eee88602b0181dd49affdf8c92980c85c"
-  integrity sha512-6l3fiLdX/bfhh0BoxGq+jGkagFsO+mrE/eRV4+3/0k8+FDxO90vdPpQdDiwlM5vWXRxWthTzMM09/jHw+4cvNw==
 
 react-native-image-picker@^1.0.1:
   version "1.1.0"

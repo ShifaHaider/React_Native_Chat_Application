@@ -10,110 +10,35 @@ class Request extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            listArr: [{
-                name: 'Amy Farha',
-                avatar_url: "https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg",
-
-            },
-            {
-                name: 'Vice President',
-                avatar_url: "https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg",
-
-            },
-            {
-                name: 'Shifa',
-                avatar_url: "https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg",
-
-            },
-            {
-                name: 'Shehzil',
-                avatar_url: "https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg",
-            },
-            {
-                name: 'UmmeRumman',
-                avatar_url: "https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg",
-            },
-            
-            {
-                name: 'Shifa',
-                avatar_url: "https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg",
-
-            },
-            {
-                name: 'Shifa',
-                avatar_url: "https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg",
-
-            },
-           
-            {
-                name: 'Shifa',
-                avatar_url: "https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg",
-
-            },
-            {
-                name: 'Shifa',
-                avatar_url: "https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg",
-
-            },
-            {
-                name: 'Shifa',
-                avatar_url: "https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg",
-
-            },
-            {
-                name: 'Shifa',
-                avatar_url: "https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg",
-
-            },
-            {
-                name: 'Shifa',
-                avatar_url: "https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg",
-
-            },
-            {
-                name: 'Shifa',
-                avatar_url: "https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg",
-
-            },
-            {
-                name: 'Shifa',
-                avatar_url: "https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg",
-
-            },
-            {
-                name: 'Shifa',
-                avatar_url: "https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg",
-
-            },
-            {
-                name: 'Shifa',
-                avatar_url: "https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg",
-
-            },
-            {
-                name: 'Shifa',
-                avatar_url: "https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg",
-
-            },
-            ],
+            users: [],
 
         }
+        this.findUsers();
+    }
+    findUsers() {
+        var url = "http://192.168.0.102:9000/users/findAllUsers";
+        fetch(url, {
+            method: "get"
+        }).then(res => res.json())
+            .then((usersData) => {
+                this.setState({ users: usersData });
+            })
     }
     render() {
         return (
             <View>
-                <View >
+                <View>
                     {
-                        this.state.listArr.map((l, i) => (
+                        this.state.users.map((l, i) => (
                             <ListItem
                                 key={i}
                                 title={l.name}
                                 leftAvatar={{ source: require('../../Images/flower.jpg') }}
                                 rightElement={<View style={{ flex: 1, flexDirection: "row", justifyContent: "space-around" , }}>
                                     <TouchableOpacity activeOpacity={.5} style={styles.confirmButton} >
-                                    <Text style={{color: "#fff",fontSize: 12}}>CONFIRM</Text>
+                                    <Text style={{color: "#fff",fontSize: 12}}>Accept</Text>
                                 </TouchableOpacity><TouchableOpacity activeOpacity={.5} style={styles.deleteButton}>
-                                        <Text style={{ fontSize: 12, color: "#ef6e73" }}>DELETE</Text>
+                                        <Text style={{ fontSize: 12, color: "#ef6e73" }}>Remove</Text>
                                     </TouchableOpacity></View>
                                 }
                                 bottomDivider

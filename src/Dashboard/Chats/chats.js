@@ -11,69 +11,15 @@ class Chats extends Component {
     constructor(props){
         super(props);
         this.state={
-            messages:[{
-                name: 'Amy Farha',
-                avatar_url: "https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg",
-                subtitle: 'Vice President'
-            },
-            {
-                name: 'Amy Farha',
-                avatar_url: "https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg",
-                subtitle: 'Vice President'
-            }, {
-                name: 'Amy Farha',
-                avatar_url: "https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg",
-                subtitle: 'Vice President'
-            },
-            {
-                name: 'Amy Farha',
-                avatar_url: "https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg",
-                subtitle: 'Vice President'
-            },
-            {
-                name: 'Amy Farha',
-                avatar_url: "https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg",
-                subtitle: 'Vice President'
-            },
-            {
-                name: 'Amy Farha',
-                avatar_url: "https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg",
-                subtitle: 'Vice President'
-            },
-            {
-                name: 'Amy Farha',
-                avatar_url: "https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg",
-                subtitle: 'Vice President'
-            },
-            {
-                name: 'Amy Farha',
-                avatar_url: "https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg",
-                subtitle: 'Vice President'
-            }, {
-                name: 'Amy Farha',
-                avatar_url: "https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg",
-                subtitle: 'Vice President'
-            }, {
-                name: 'Amy Farha',
-                avatar_url: "https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg",
-                subtitle: 'Vice President'
-            }, {
-                name: 'Amy Farha',
-                avatar_url: "https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg",
-                subtitle: 'Vice President'
-            }, {
-                name: 'Amy Farha',
-                avatar_url: "https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg",
-                subtitle: 'Vice President'
-            },]
+            messages:[]
         }
-        this.findUsers()
+        this.findUsers();
     }
    goToRoom(d) {
         this.props.routes.navigation.navigate("Room", { friendID: d._id });
     }
    findUsers() {
-        var url = "http://192.168.0.101:9000/users/findAllUsers";
+        var url = "http://192.168.0.102:9000/users/findAllUsers";
         fetch(url, {
             method: "get"
         }).then(res => res.json())
@@ -81,6 +27,7 @@ class Chats extends Component {
                 this.setState({messages: text})
             })
     }
+    
     render(){
         return (
             <View>
