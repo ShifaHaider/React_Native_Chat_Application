@@ -12,6 +12,7 @@ api.post("/users" , function(req , res){
 })
 api.get("/findAllUsers" , function(req , res){
     UserModel.find().exec((error , data)=>{
+        console.log(error || data)
         res.send(data || error)
     })
 })

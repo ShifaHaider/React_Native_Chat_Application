@@ -11,10 +11,13 @@ var Users = require("./Router/users");
 app.use("/users" , Users);
 var Messages = require("./Router/conversation");
 app.use("/messages", Messages);
+var Friends = require("./Router/friends-route");
+app.use("/friends" , Friends);
 
-app.get('/index', function (req, res) {
-    res.send('Index');
-});
+// app.get('/index', function (req, res) {
+//     res.send('Index');
+// });
+
 
 
 app.set('port', process.env.PORT || 9000);
