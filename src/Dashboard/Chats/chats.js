@@ -2,7 +2,7 @@ import React, { Component, useState } from "react";
 
 import {
     SafeAreaView, StyleSheet, ScrollView, View, Text, StatusBar, TextInput,
-    ImageBackground, TouchableOpacity, ActivityIndicator, Image, Button,
+    ImageBackground, TouchableOpacity, ActivityIndicator, Image, Button, Alert
 } from 'react-native';
 import { ListItem } from 'react-native-elements';
 
@@ -19,11 +19,13 @@ class Chats extends Component {
         this.props.routes.navigation.navigate("Room", { friendID: d._id });
     }
    findUsers() {
-        var url = "http://192.168.0.102:9000/users/findAllUsers";
+        var url = "http://192.168.1.102:9000/users/findAllUsers";
         fetch(url, {
             method: "get"
-        }).then(res => res.json())
+        })
+        .then(res => res.json())
             .then((text) => {
+                console.log(text , "res")
                 this.setState({messages: text})
             })
     }

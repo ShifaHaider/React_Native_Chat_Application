@@ -67,7 +67,7 @@ class Contacts extends Component {
         this.findUsers();
     }
     findUsers() {
-        var url = "http://192.168.0.102:9000/users/findAllUsers";
+        var url = "http://192.168.1.102:9000/users/findAllUsers";
         fetch(url, {
             method: "get"
         }).then(res => res.json())
@@ -86,7 +86,7 @@ class Contacts extends Component {
         else{
             user.isRequest = true;
         }
-        var url = "http://192.168.0.102:9000/users/updateUserProfile";
+        var url = "http://192.168.1.102:9000/users/updateUserProfile";
         fetch(url, {
             method: "post",
             body: JSON.stringify({ updatedData: user }),
@@ -124,21 +124,21 @@ class Contacts extends Component {
                                 //     <Text style={styles.buttonText}>{!l.isRequest ?"Send Request":"Sent Request" }</Text>
                                 // </TouchableOpacity></View>}
                                 rightElement={
-                              !l.isRequest?
+                            //   !l.isRequest?
                                     <View style={{ flex: 1, flexDirection: "row", justifyContent: "space-around" }}>
                                          <TouchableOpacity activeOpacity={.5} style={styles.button} onPress={this.updateProfile.bind(this , l)}>
                                      <Text style={styles.buttonText}>Send Request</Text>
                                  </TouchableOpacity>
                                  </View>
-                                 : 
-                                 <View style={{ flex: 1, flexDirection: "row", justifyContent: "space-around" }}>
-                                     <View  style={styles.button} >
-                                     <Text style={styles.buttonText}>Sent Req</Text>
-                                 </View>
-                                <TouchableOpacity activeOpacity={.5} style={styles.deleteButton} onPress={this.updateProfile.bind(this , l , "cancel" )}>
-                                        <Text style={{ fontSize: 12, color: "#ef6e73" }}>Cancel</Text>
-                                    </TouchableOpacity>
-                                    </View>
+                                //  : 
+                                //  <View style={{ flex: 1, flexDirection: "row", justifyContent: "space-around" }}>
+                                //      <View  style={styles.button} >
+                                //      <Text style={styles.buttonText}>Sent Req</Text>
+                                //  </View>
+                                // <TouchableOpacity activeOpacity={.5} style={styles.deleteButton} onPress={this.updateProfile.bind(this , l , "cancel" )}>
+                                //         <Text style={{ fontSize: 12, color: "#ef6e73" }}>Cancel</Text>
+                                //     </TouchableOpacity>
+                                //     </View>
                                 }
                             bottomDivider
 

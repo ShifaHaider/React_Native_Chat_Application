@@ -5,6 +5,7 @@ import {
     ImageBackground, TouchableOpacity, ActivityIndicator, Image
 } from 'react-native';
 import Icon from 'react-native-vector-icons/dist/MaterialIcons';
+import Video from 'react-native-video';
 
 const R = (props) => {
     const [email, setEmail] = useState("")
@@ -118,7 +119,7 @@ class Room extends Component {
     sendMessage() {
         var data = {
             text: this.state.message,
-            roomID:this.props.navigation.state.params.friendID,
+            roomID: this.props.navigation.state.params.friendID,
             senderID: this.props.navigation.state.params.friendID
         }
         var url = "http://192.168.0.102:9000/messages/messages";
@@ -132,10 +133,10 @@ class Room extends Component {
         })
             .then(res => res.json())
             .then(text => console.log(text)).catch(err => console.log(err))
-       
+
         if (this.state.message) {
             this.state.messages.push({ message: this.state.message, id: "me", date: Date.now() })
-            this.setState({ messages: this.state.messages })
+            this.setState({ messages: this.state.messages });
         }
     }
 
@@ -144,7 +145,7 @@ class Room extends Component {
             <View style={{ flex: 1, backgroundColor: "#f4f1f1" }}>
                 <View style={styles.header}>
                     <View style={styles.headerItems}>
-                        <View >
+                        <View>
                             <TouchableOpacity activeOpacity={.5} onPress={this.goToDashboard.bind(this)}>
                                 <Icon name="arrow-back" style={{ color: "#fff", fontSize: 24, }} />
                             </TouchableOpacity>
@@ -159,6 +160,14 @@ class Room extends Component {
                     {this.state.messages.map((data, key) => {
                         return (
                             <View key={key} >
+                                <Video source={{uri: 'https://www.youtube.com/watch?v=UlMtZChqT_E' }}
+                                    ref={(ref) => {
+                                        console.log(ref)
+                                        this.player = ref
+                                    }}
+                                    onBuffer={this.onBuffer}
+                                    onError={this.videoError}
+                                    style={styles.backgroundVideo} />
                                 {key % 2 === 0 ? <View style={styles.myMessage}>
                                     <Text style={{ color: "#fff", }}>{data.message}</Text>
                                 </View> : <View>
@@ -246,18 +255,17 @@ const styles = StyleSheet.create({
         // marginBottom: 8,
         justifyContent: "center",
         alignItems: "center",
-    }
+    },
+    backgroundVideo: {
+        height:250,
+        width:300,
+        borderRadius:8,
+        // position: 'absolute',
+        // top: 0,
+        // left: 0,
+        // bottom: 0,
+        // right: 0,
+    },
 });
 
 export default Room;
-
-// box-shadow:{
-        // shadowColor: "#000",
-        // shadowOffset: {
-        //     width: 0,
-        //     height: 2,
-        // },
-        // shadowOpacity: 0.25,
-        // shadowRadius: 3.84,
-        // elevation: 5
-// }

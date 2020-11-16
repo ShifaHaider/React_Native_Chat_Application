@@ -16,7 +16,7 @@ class Request extends Component {
         this.findUsers();
     }
     findUsers() {
-        var url = "http://192.168.0.102:9000/users/findAllUsers";
+        var url = "http://192.168.1.102:9000/users/findAllUsers";
         fetch(url, {
             method: "get"
         }).then(res => res.json())

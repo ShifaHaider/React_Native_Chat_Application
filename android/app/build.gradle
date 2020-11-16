@@ -204,12 +204,8 @@ implementation "com.google.android.gms:play-services-base:16.1.0"
     implementation "com.google.firebase:firebase-auth:17.0.0"
       implementation "com.google.firebase:firebase-firestore:19.0.0"
   implementation "com.google.firebase:firebase-storage:17.0.0"
-
-
-
-
-
-
+      compile project(':react-native-video')
+   implementation "androidx.appcompat:appcompat:1.0.0"
 
     if (enableHermes) {
         def hermesPath = "../../node_modules/hermes-engine/android/";

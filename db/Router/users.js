@@ -17,10 +17,9 @@ api.get("/findAllUsers" , function(req , res){
     })
 })
 api.get("/findOneUser" , function(req , res){
-       console.log("dssfdfs")
          UserModel.findById(req.query.id).exec((error , data)=>{
              res.send(data || error);
-             console.log(error)
+             console.log(data || error)
          })
 })
 
@@ -32,7 +31,7 @@ api.post("/updateUserProfile" , function(req , res){
 })
 
 api.get("/users" , function(req , res){
-    res.send("This is users route.");
+    res.send("This is users route");
 })
     
 module.exports = api;

@@ -14,7 +14,7 @@ import {
 import Icon from 'react-native-vector-icons/dist/MaterialIcons';
 import MaterialIcon from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 import ImagePicker from 'react-native-image-picker';
-import { Input,Tooltip, } from 'react-native-elements';
+import { Input, Tooltip, } from 'react-native-elements';
 import firebase from 'react-native-firebase';
 
 
@@ -93,21 +93,21 @@ export default class App extends React.Component {
     userData.phone = this.state.phone;
     userData.picture = this.state.picture;
     var url = "http://192.168.0.102:9000/users/updateUserProfile";
-      fetch(url, {
-        method: "post",
-        body: JSON.stringify({updatedData: this.state.userData}),
-        headers: {
-            "Accept": "application/json",
-            "Content-Type": "application/json"
-        }
+    fetch(url, {
+      method: "post",
+      body: JSON.stringify({ updatedData: this.state.userData }),
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      }
     }).then((data) => {
-        data.json().then((userData) => {
-            this.setState({ editProfile:false})
-        });
+      data.json().then((userData) => {
+        this.setState({ editProfile: false })
+      });
     })
-        .catch((err) => {
-            console.log(err);
-        });
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   render() {
@@ -196,7 +196,7 @@ export default class App extends React.Component {
                   <Text style={{ fontSize: 14, color: "#ef6e73" }}>Contect Number</Text>
                   <Text style={{ fontSize: 16 }}>{this.state.userData.phone}</Text>
                 </View>
-        
+
                 {/* <View style={{height: 10, width: "85%", }}>
                 <Input label='Name' />
                 </View> */}
@@ -243,6 +243,15 @@ const styles = StyleSheet.create({
   image: {
     height: 130, width: 130,
     borderRadius: Math.round(Dimensions.get('window').width + Dimensions.get('window').height) / 2,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 12,
+    },
+    shadowOpacity: 0.58,
+    shadowRadius: 16.00,
+    borderColor:"#000"
+    
   },
   buttonView: {
     height: 45,
